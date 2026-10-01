@@ -1,0 +1,35 @@
+۱۳_ تابع ترکیب c(n, k) را میتوان با استفاده از رابطه زیر بیان نمود:
+C(n,k) = (P(n,k))/(k!)
+با استفاده از این رابطه برنامه مساله ۵-۱۳ را بازنویسی کرده و آزمایش کنید.
+
+پاسخ:
+#include <iostream>
+using namespace std;
+
+int fact(int n)
+{
+    int f = 1;
+    for (int i = 1; i <= n; i++)
+        f *= i;
+    return f;
+}
+
+int perm(int n, int k)
+{
+    int p = 1;
+    for (int i = n; i >= n-k+1; i--)
+        p *= i;
+    return p;
+}
+
+int comb(int n, int k)
+{
+    return perm(n, k) / fact(k);
+}
+
+int main()
+{
+    cout << comb(5, 2);
+
+    return 0;
+}
